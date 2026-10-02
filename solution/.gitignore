@@ -1,0 +1,21 @@
+# Bundler
+.bundle/
+vendor/bundle/
+
+# Gems
+*.gem
+
+# Documentation and coverage
+.yardoc/
+doc/
+coverage/
+
+# Test output
+/tmp/
+
+# Environment variables
+.env
+
+# Editors
+.idea/
+.vscode/
