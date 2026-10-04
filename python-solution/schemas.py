@@ -26,10 +26,10 @@ class Allocation(BaseModel):
     percentage: float = Field(ge=0, le=1)
 
     def __repr__(self) -> str:
-        return f"Stock: {self.stock.symbol} {self.percentage}%"
+        return f"Stock: {self.stock.symbol} {self.percentage*100}%"
 
     def __str__(self) -> str:
-        return f"Stock: {self.stock.symbol} {self.percentage}%"
+        return f"Stock: {self.stock.symbol} {self.percentage*100}%"
 
 
 class Target(RootModel):
@@ -93,7 +93,7 @@ class Portfolio(BaseModel):
         for holding in self.holdings:
             allocation[holding.stock.symbol] = Allocation(
                 stock=holding.stock,
-                percentage=round(holding.current_balance() / total_value, 2),
+                percentage=round(holding.current_balance() / total_value, 4),
             )
         return Target(allocation)
 
